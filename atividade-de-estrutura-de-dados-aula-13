@@ -1,0 +1,23 @@
+def mdc(a, b):
+  if b == 0:
+    return a
+  else:
+    return mdc(b, a % b)
+
+
+
+
+def inv_matriz(matriz):
+  if len(matriz) == 1:
+    return matriz[0][0]
+  else:
+    submatriz = inv_matriz(matriz[1:])
+    determinante = calc_determinante(matriz)
+    adjunta = adj(matriz)
+    inversa = []
+    for i in range(len(matriz)):
+      linha = []
+      for j in range(len(matriz)):
+        linha.append(adjunta[i][j] / determinante)
+      inversa.append(linha)
+    return inversa
